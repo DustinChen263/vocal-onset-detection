@@ -1,0 +1,25 @@
+# Core scientific stack
+numpy==1.23.5
+scipy==1.10.1
+pandas==2.0.3
+matplotlib==3.7.5
+
+# Audio
+librosa==0.10.1
+soundfile==0.12.1
+
+# MIR
+mir_eval==0.7
+mirdata==0.3.9
+
+# madmom needs to be installed from source on Python >= 3.10,
+# but works on Python 3.9 via pip. We pin the latest released version.
+madmom==0.16.1
+Cython==0.29.36   # required to build madmom
+
+# Notebook
+jupyterlab==4.0.11
+ipykernel==6.29.0
+
+# Optional: source separation (Step 6 / optional extension)
+# demucs==4.0.1

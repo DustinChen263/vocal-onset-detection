@@ -1,0 +1,29 @@
+# --- Datasets (too large for git) ---
+data/
+!data/.gitkeep
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- IDE ---
+.vscode/
+.idea/
+
+# --- Results: keep final figures/tables, ignore scratch ---
+results/scratch/
+
+# --- Jupyter notebook outputs (optional) ---
+# Uncomment if you want to strip notebook outputs before committing
+# *.ipynb
