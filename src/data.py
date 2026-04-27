@@ -29,6 +29,23 @@ import librosa
 import mirdata
 
 
+# ---------------------------------------------------------------------------
+# Path helpers
+# ---------------------------------------------------------------------------
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+
+def _resolve_data_home(data_home: str) -> str:
+    """If ``data_home`` is relative, resolve it relative to the project root
+    (the parent of ``src/``). Lets notebooks in any subdirectory use the
+    same default ``"data/<dataset>"`` paths without breaking."""
+    p = Path(data_home)
+    if not p.is_absolute():
+        p = PROJECT_ROOT / p
+    return str(p)
+
+
 @dataclass
 class Track:
     """Uniform container for one audio clip + its onset ground truth."""
@@ -72,7 +89,7 @@ def load_vocadito(data_home: str = "data/vocadito",
     if annotator not in ("a1", "a2"):
         raise ValueError(f"annotator must be 'a1' or 'a2', got {annotator!r}")
 
-    voc = mirdata.initialize("vocadito", data_home=data_home)
+    voc = mirdata.initialize("vocadito", data_home=_resolve_data_home(data_home))
     tracks: list[Track] = []
 
     for tid in voc.track_ids:
@@ -126,7 +143,8 @@ def load_dagstuhl(data_home: str = "data/dagstuhl_choirset",
     if mic not in ("stm", "stl", "str", "rev"):
         raise ValueError(f"mic must be one of stm/stl/str/rev, got {mic!r}")
 
-    dcs = mirdata.initialize("dagstuhl_choirset", data_home=data_home)
+    dcs = mirdata.initialize("dagstuhl_choirset",
+                             data_home=_resolve_data_home(data_home))
     tracks: list[Track] = []
 
     for mtid in dcs.mtrack_ids:

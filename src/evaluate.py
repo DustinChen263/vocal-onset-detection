@@ -18,6 +18,7 @@ Usage
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Callable, Iterable
 import time
 
@@ -25,7 +26,7 @@ import numpy as np
 import pandas as pd
 import mir_eval
 
-from src.data import Track
+from src.data import Track, PROJECT_ROOT
 
 
 def evaluate_track(ref_onsets: np.ndarray,
@@ -119,6 +120,7 @@ if __name__ == "__main__":
     print("\n=== Per-dataset summary (mean ± std) ===")
     print(summary_table(df))
 
-    out = "results/raw_metrics.csv"
+    out = PROJECT_ROOT / "results" / "raw_metrics.csv"
+    out.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out, index=False)
     print(f"\nSaved per-track metrics to {out}")
