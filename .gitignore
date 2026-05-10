@@ -23,6 +23,11 @@ Thumbs.db
 
 # --- Results: keep final figures/tables, ignore scratch ---
 results/scratch/
+results/separation_run.log
+results/separation_metrics_smoke.csv
+
+# --- Caches for source-separation extension ---
+.cache/
 
 # --- Jupyter notebook outputs (optional) ---
 # Uncomment if you want to strip notebook outputs before committing

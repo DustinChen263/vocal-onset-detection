@@ -63,6 +63,17 @@ def main() -> int:
         assert cnn is not None and picker is not None
     ok &= check("madmom CNN weights load", _cnn)
 
+    # 5. Source-separation extension modules (optional but ship in the repo)
+    def _sep():
+        import src._env  # noqa: F401
+        from src.mixtures   import (mix_at_snr,                        # noqa
+                                    prepare_musdb_accompaniments,
+                                    SAMPLE_RATE)
+        from src.separation import separate_vocals                      # noqa
+        from src.viz_separation import (plot_vocadito_snr_curve,        # noqa
+                                        plot_dagstuhl_separation_bars)
+    ok &= check("source-separation extension importable", _sep)
+
     print()
     if ok:
         print("All systems go ✓")

@@ -21,5 +21,9 @@ Cython==0.29.36   # required to build madmom
 jupyterlab==4.0.11
 ipykernel==6.29.0
 
-# Optional: source separation (Step 6 / optional extension)
-# demucs==4.0.1
+# Source separation extension
+demucs==4.0.1
+musdb==0.4.2
+stempeg==0.2.3
+torch==2.8.0
+torchaudio==2.8.0
